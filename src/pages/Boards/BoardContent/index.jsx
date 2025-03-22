@@ -38,6 +38,7 @@ const BoardContent = () => {
       gap:2,
       overflowX: 'auto',
       overflowY: 'hidden ',
+      backgroundColor: 'background.paper'
     }}>
 
       <Box sx={{
