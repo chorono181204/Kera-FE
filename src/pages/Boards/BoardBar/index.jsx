@@ -7,22 +7,25 @@ import BoltIcon from '@mui/icons-material/Bolt'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import Avatar from '@mui/material/Avatar'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
-const BoardBar = () => {
+import {capitalizeFirstLetter} from "../../../utils/formatter.js";
+const BoardBar = (props) => {
+  const { board } = props
+
   return (
-    <Box sx={{ backgroundColor:'background.paper' ,
+    <Box sx={{ backgroundColor:'background.paper',
       width: '100%',
       height: (theme) => theme.customProperties.boardBarHeight,
       display: 'flex',
       alignItems: 'center',
       gap: '10px',
       overflowX: 'auto',
-        borderBottom: (theme) => `1px solid ${theme.palette.background.default}`,
+      borderBottom: (theme) => `1px solid ${theme.palette.background.default}`,
       justifyContent: 'space-between',
       paddingX:'20px'
     }}>
       <Box sx={{ display:'flex', alignItems:'center', gap:'15px' }}>
         <Chip icon={<SpaceDashboardIcon />}
-          label='My board'
+          label={board?.title}
           clickable sx ={{ color : 'text.primary',
             backgroundColor:'background.paper',
             borderRadius:'4px',
@@ -33,7 +36,7 @@ const BoardBar = () => {
           }} />
 
         <Chip icon={<PublicIcon/>}
-          label='Public'
+          label={capitalizeFirstLetter(board?.type)}
           clickable sx ={{ color : 'text.primary',
             backgroundColor:'background.paper',
             borderRadius:'4px',
@@ -76,16 +79,16 @@ const BoardBar = () => {
           }} />
       </Box>
       <Box sx={{ display:'flex', alignItems:'center', gap:'15px' }}>
-          <Button variant="contained" startIcon={<PersonAddIcon/>} >Invite </Button>
-        <AvatarGroup max={6} sx={{  gap:'10px',  '& .MuiAvatar-root':
-                { width : 30, height:30 , border:'none','&:first-of-style':{bgcolor:'text.primary'} } }  }>
+        <Button variant="contained" startIcon={<PersonAddIcon/>} >Invite </Button>
+        <AvatarGroup max={6} sx={{ gap:'10px', '& .MuiAvatar-root':
+                { width : 30, height:30, border:'none', '&:first-of-style':{ bgcolor:'text.primary' } } } }>
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
           <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
           <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
           <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
-            <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
-            <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
+          <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
+          <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
         </AvatarGroup>
 
       </Box>
